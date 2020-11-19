@@ -1,21 +1,18 @@
-TARGET = max
+TARGET = max max2 max3 max4
 
 CXX = g++
-CXXFLAGS =
+CXXFLAGS = -std=c++11
 INC_DIRS =
 LIBS =
 
 SRCS = $(wildcard *.cpp)
-OBJS = $(SRCS:%.cpp=%.o)
+OBJS = $(SRCS:%.cpp=%)
 
 all: $(TARGET)
 
-$(TARGET): $(OBJS)
+$(TARGET): %: %.cpp
 	$(CXX) $(CXXFLAGS) -o $@ $< $(INC_DIRS) $(LIBS)
 
-.cpp.o:
-	$(CXX) -c $< -o $@ $(INC_DIRS)
-
 clean:
-	rm -rf *.o
 	rm -rf $(TARGET)
+	rm -rf *.o
