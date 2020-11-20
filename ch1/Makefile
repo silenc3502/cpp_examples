@@ -1,4 +1,4 @@
-TARGET = max max2 max3 max4 clean_max4cver max4_c_ver
+TARGET = typecheck ref_test ref_test2 ref_test3 ref_test4
 
 CXX = g++
 CXXFLAGS = -std=c++11
@@ -12,7 +12,7 @@ OBJS += $(SRCS:%.c=%)
 
 all: $(OBJS)
 
-.cpp.o:
+.cpp.o: 
 	$(CXX) $(CXXFLAGS) -o $@ $< $(INC_DIRS) $(LIBS)
 
 .c.o:

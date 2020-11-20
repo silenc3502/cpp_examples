@@ -1,4 +1,4 @@
-TARGET = max max2 max3 max4 clean_max4cver max4_c_ver
+TARGET = stack_test4 add_value_test
 
 CXX = g++
 CXXFLAGS = -std=c++11
@@ -6,17 +6,12 @@ INC_DIRS =
 LIBS =
 
 SRCS = $(wildcard *.cpp)
-SRCS += $(wildcard *.c)
 OBJS = $(SRCS:%.cpp=%)
-OBJS += $(SRCS:%.c=%)
 
-all: $(OBJS)
+all: $(TARGET)
 
-.cpp.o:
+$(TARGET): %: %.cpp
 	$(CXX) $(CXXFLAGS) -o $@ $< $(INC_DIRS) $(LIBS)
-
-.c.o:
-	$(CC) $(CFLAGS) -o $@ $< $(INC_DIRS) $(LIBS)
 
 clean:
 	rm -rf $(TARGET)
