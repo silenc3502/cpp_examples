@@ -1,5 +1,5 @@
 ch		:= "ch"
-num_set		:= $(shell seq 01 06)
+num_set		:= $(shell seq 01 07)
 modules		:= $(foreach str, $(num_set), $(ch)$(str))
 
 .PHONY:	all $(modules)

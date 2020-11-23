@@ -1,0 +1,33 @@
+TARGET = first_main second_main
+
+CXX = g++
+CXXFLAGS = -std=c++17
+INC_DIRS =
+LIBS =
+
+SRC_DIR = .
+OBJ_DIR = .
+
+#SRCS = $(filter-out first_main.o, $(wildcard *.cpp))
+#SRCS += $(wildcard *.c)
+#OBJS = $(SRCS:.cpp=.o)
+#OBJS += $(SRCS:.c=.o)
+
+#OBJECTS = $(patsubst %.o, $(OBJ_DIR)/%.o, $(OBJS))
+
+CPP_SRCS = $(notdir $(wildcard $(SRC_DIR)/*.cpp))
+CPP_OBJS = $(CPP_SRCS:%.cpp=%.o)
+
+all: $(TARGET)
+
+%.o: $(SRC_DIR)/%.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@ $(LDFLAGS) $(INC_DIRS) $(LIBS)
+	@echo "OBJS: " $(CPP_OBJS)
+
+$(TARGET): $(CPP_OBJS)
+	$(CXX) $(CXXFLAGS) $(CPP_OBJS) -o $(TARGET) $(LDFLAGS)
+
+.PHONY: clean all
+clean:
+	rm -rf $(TARGET)
+	rm -rf *.o
