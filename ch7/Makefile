@@ -1,4 +1,4 @@
-TARGET = max adl
+TARGET = max adl inject lazy
 
 CXX = g++
 CXXFLAGS = -std=c++17
